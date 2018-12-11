@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 username = '' # spotify username
 
 # Spoitfy Credentials
-sp_scope = 'user-read-recently-played user-top-read user-read-playback-state'
+sp_scope = 'user-read-playback-state'
 sp_client_id = ''
 sp_client_secret = ''
 sp_redirect_uri = ''
@@ -52,11 +52,9 @@ song_title = playback['item']['name']
 album_title = playback['item']['album']['name']
 album_type = playback['item']['album']['album_type']
 
-
 print()
 print("Welcome to Genius Lyrics, " + displayName + "!")
 print()
-
 
 # METHOD WITH SONG AND ARTIST INPUT
 def request_song_info(song_title, artist_name):
@@ -75,9 +73,6 @@ def scrap_song_url(url):
     lyrics = html.find('div', class_='lyrics').get_text()
 
     return lyrics
-
-curr_artist = ''
-curr_song = ''
 
 
 # SEARCH FOR MATCHES IN THE REQUEST RESPONSE
@@ -102,6 +97,9 @@ print(lyrics)
 
 
 # LOOP TO KEEP DISPLAYING LYRICS REAL TIME; MAY TIME OUT
+
+# curr_artist = ''
+# curr_song = ''
 
 # while True:
 #
